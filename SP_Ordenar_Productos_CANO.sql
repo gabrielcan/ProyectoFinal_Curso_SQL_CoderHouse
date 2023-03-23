@@ -1,4 +1,4 @@
-CREATE DEFINER=`root`@`localhost` PROCEDURE `ORDENAR_PRODUCTOS`(IN ORDEN varchar(55), IN tipo char(2))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `ORDENAR_PRODUCTOS`(IN Campo_tabla varchar(20), IN tipo char(1))
 BEGIN
 /* verificamos que no este vacia la variable que carga el usuario*/
 IF ORDEN <>'' THEN
@@ -28,3 +28,8 @@ EXECUTE runSQL;
 deallocate prepare runSQL;
 
 END
+
+/*
+ejemplo de como ejecutar el SP
+CALL ORDENAR_PRODUCTOS('Precio_Unitario', 'A');
+*/
