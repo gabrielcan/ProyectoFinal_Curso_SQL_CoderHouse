@@ -1,16 +1,16 @@
 CREATE DEFINER=`root`@`localhost` PROCEDURE `ORDENAR_PRODUCTOS`(IN Campo_tabla varchar(20), IN tipo char(1))
 BEGIN
 /* verificamos que no este vacia la variable que carga el usuario*/
-IF ORDEN <>'' THEN
+IF Campo_tabla <>'' THEN
 /* Realizamos una segunda verificacion para saber si el usuario eligio un tipo de ordenamito (A = Ascendente , D= Descendente y si es vacio tendra el orden por defecto que tiene mysql)*/
 	IF tipo = 'A' THEN
     
     /*concatenamos las variables completadas por el usario para el ordenamiento */
-		SET @ORDERBY = concat('ORDER BY ',ORDEN);
+		SET @ORDERBY = concat('ORDER BY ',Campo_tabla);
 		SET @TIPO=' asc';
 	ELSEIF tipo='D' THEN
     /*concatenamos las variables completadas por el usario para el ordenamiento */
-		SET @ORDERBY = concat('ORDER BY ',ORDEN);
+		SET @ORDERBY = concat('ORDER BY ',Campo_tabla);
 		SET @TIPO=' desc';
 	ELSE
 		SET @TIPO='';

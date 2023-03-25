@@ -12,7 +12,7 @@ INSERT INTO clientes(dni,nombre,apellido,mail,Fecha_Ingreso,Fecha_Nacimiento) VA
 set Respuesta='INSERCION EXITOSA';
 
 /* ejecutamos la consulta select para poder ver toda la tabla cliente */
-SET @InsertClient='select * from clientes';
+SET @InsertClient='select * from clientes order by id_clientes desc';
 PREPARE runClientes from @InsertClient;
 execute runClientes;
 deallocate prepare runClientes;

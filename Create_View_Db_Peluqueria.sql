@@ -1,7 +1,8 @@
 -- View: Edades de clientes
 
 CREATE view TB_CLIENTES_EDAD AS 
-select Nombre,Apellido,year(now())-YEAR(Fecha_Nacimiento) as Edad from clientes;
+select id_clientes,Nombre,Apellido,year(now())-YEAR(Fecha_Nacimiento) as Edad from clientes
+ORDER BY (YEAR(NOW()) - YEAR(Fecha_Nacimiento)) DESC;
 
 -- View: Detalles de gastados por cada cliente
 
@@ -9,7 +10,8 @@ CREATE view TB_Detalles_Gastos_Clientes AS
 select clientes.id_Clientes, clientes.nombre,clientes.Apellido,servicios.Nombre as Servicio,citas.Fecha,servicios.Precio from clientes 
 join citas ON clientes.id_Clientes=citas.id_Clientes 
 join citas_serv ON citas.id_Citas=citas_serv.id_Citas
-join servicios ON citas_serv.id_Servicios=servicios.id_Servicios;
+join servicios ON citas_serv.id_Servicios=servicios.id_Servicios
+ORDER BY servicios.Precio DESC;
 
 -- View: Agrupo por Mes el total gastado por cada cliente
 CREATE view TB_Agrupodo_por_Mes_Gastos_Clientes AS
