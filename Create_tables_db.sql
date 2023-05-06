@@ -190,6 +190,37 @@ CREATE TABLE DETALLES_COMPRAS (
 CONSTRAINT PK_DETALLES_COMPRAS PRIMARY KEY (id_Detalles_Compras)
 );
 
+
+-- Table:_audit_new_Productos (Creo una Tabla de auditoria para la tabla "Productos")
+
+create table _audit_new_Productos(
+id int auto_increment not null,
+Tb_update varchar(50),
+Created_by varchar(30),
+tipo_event varchar(10),
+id_update int not null,
+nombre_Prod varchar (50),
+fech_update Date Not null,
+time_update time not null,
+
+CONSTRAINT PK_audit_new_Productos PRIMARY KEY (id)
+);
+
+-- Table: _audit_new_clientes (Creo una Tabla de auditoria para la tabla "clientes")
+
+create table _audit_new_clientes(
+id int auto_increment not null,
+Tb_update varchar(50),
+Created_by varchar(30),
+tipo_event varchar(10),
+id_update int not null,
+fech_update Date Not null,
+time_update time not null,
+
+CONSTRAINT PK_audit_new_clientes PRIMARY KEY (id)
+);
+
+
 -- foreign keys
 
 -- Reference: FK_COMPRAS_EMPLEADOS (table: COMPRAS)
